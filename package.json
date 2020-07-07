@@ -1,0 +1,35 @@
+{
+  "name": "dcmpackage",
+  "version": "1.0.0",
+  "description": "Small utility app for packaging banners in >150kb ",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --exec electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=false --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"ImageShrink\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=false --out=release-builds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaskkey/DCMPackage.git"
+  },
+  "author": "Awraam Waskowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaskkey/DCMPackage/issues"
+  },
+  "homepage": "https://github.com/vaskkey/DCMPackage#readme",
+  "devDependencies": {
+    "electron": "^9.0.5",
+    "electron-packager": "^15.0.0"
+  },
+  "dependencies": {
+    "archiver": "^4.0.1",
+    "electron-log": "^4.2.2",
+    "imagemin": "^7.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.0",
+    "slash": "^3.0.0"
+  }
+}
