@@ -24,7 +24,7 @@ const isAnImg = (name) => /.jpg$|.png$/.test(name);
 function createMainWindow(){
     mainWindow = new BrowserWindow({
         title: 'DCMPackage',
-        width: 600,
+        width: isDev ? 1000 : 600,
         height: 600,
         icon: `${__dirname}/assets/icons/icon.png`,
         resizable: false,
@@ -33,6 +33,9 @@ function createMainWindow(){
             nodeIntegration: true
         }
     })
+    if(isDev){
+        mainWindow.webContents.openDevTools()
+    }
     
     mainWindow.loadFile('./src/index.html');
 }
@@ -103,7 +106,7 @@ async function shrinkImage(img, dest, level){
 }
 
 function createZip(dir, name){
-    const root = path.normalize(`${dir}..`);
+    const root = path.normalize(`${dir}/..`);
     const zipName = path.join(root, `${name}.zip`)
     const output = fs.createWriteStream(zipName);
     const archive = archiver('zip', {
