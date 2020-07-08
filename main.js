@@ -127,7 +127,7 @@ function createZip(dir, name){
 
     archive.glob('**/*', {
         cwd: dir,
-        ignore: ['index.fla']
+        ignore: ['index.fla', '*_preview*']
     }, {})
 
     archive.finalize();
