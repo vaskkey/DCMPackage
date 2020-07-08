@@ -30,15 +30,16 @@ form.addEventListener('submit', e =>{
 
 compress.addEventListener('click', e => {
     e.preventDefault();
+    const level = slider.value;
     let fileArr = []; 
     for(let file of inputFolder.files){
-        if(isAnImg(file.name)){
+        if(isAnImg(file.name) && !(file.name.includes('_preview'))){
             const filePath = file.path;
             fileArr.push(filePath);
         }
     }
     ipcRenderer.send('image:compress', {
-        fileArr
+        fileArr, level
     })
 })
 

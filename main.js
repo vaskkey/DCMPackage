@@ -25,7 +25,7 @@ function createMainWindow(){
     mainWindow = new BrowserWindow({
         title: 'DCMPackage',
         width: 600,
-        height: 500,
+        height: 600,
         icon: `${__dirname}/assets/icons/icon.png`,
         resizable: false,
         backgroundColor: 'white',
@@ -78,19 +78,20 @@ ipcMain.on('image:compress', (e, options) => {
     options.fileArr.forEach(el => {
         const filePath = slash(el);
         const dir = slash(path.dirname(el));
-        shrinkImage(filePath, dir)
+        shrinkImage(filePath, dir, options.level)
     })
     mainWindow.webContents.send('image:done')  
 })
 
-async function shrinkImage(img, dest){
+async function shrinkImage(img, dest, level){
     try{
+        const pngLevel = level/100;
         const files = await imagemin([img], {
             destination: dest,
             plugins: [
-                imageminMozjpeg({ quality: 60 }),
+                imageminMozjpeg({ quality: level }),
                 imageminPngquant({
-                    quality: [.6, .6]
+                    quality: [pngLevel, pngLevel]
                 })
             ]
         })

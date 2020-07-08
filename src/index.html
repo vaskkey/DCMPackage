@@ -15,7 +15,7 @@
         <p>Choose a folder with banners</p>
         <form id="folder-form">
             <div class="file-field input-field">
-                <div class="btn">
+                <div class="btn amber accent-4">
                     <span>Browse Input Folder</span>
                     <input type="file" id="input-folder" webkitdirectory directory multiple>
                 </div>
@@ -24,8 +24,16 @@
                     <input type="text" class="file-path validate" placeholder="Input Folder">
                 </div>
             </div>
-            <input id="compress" type="button" value="Compress Images" class="btn black">
-            <input type="submit" value="Create Packages" class="btn black">
+
+            <p>
+                <strong>Quality:</strong>
+            </p>
+            <p class="range-field">
+                <input type="range" min="0" max="100" id="slider">
+            </p>
+
+            <input id="compress" type="button" value="Compress Images" class="btn grey darken-4">
+            <input type="submit" value="Create Packages" class="btn grey darken-4">
         </form>
     </div>
 

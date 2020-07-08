@@ -24,3 +24,25 @@
 #compress{
 	margin-bottom: 1em;
 }
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: #ffab00;
+  }
+  input[type=range]::-moz-range-thumb {
+    background-color: #ffab00;
+  }
+  input[type=range]::-ms-thumb {
+    background-color: #ffab00;
+  }
+
+  /***** These are to edit the thumb and the text inside the thumb *****/
+  input[type=range] + .thumb {
+    background-color: #dedede;
+  }
+  input[type=range] + .thumb.active .value {
+    color: #ffab00;
+  }
+
+  i{
+	color: #ffab00;  
+  }
